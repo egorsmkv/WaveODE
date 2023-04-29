@@ -58,8 +58,8 @@ def main():
     parser.add_argument('--checkpoint', type=str, required=True)
     parser.add_argument('--input', type=str, required=True, help='Path to input folder')
     parser.add_argument('--output', type=str, required=True, help='Path to output folder')
-    parser.add_argument('--sampling_method', type=str, default='rk45')
-    parser.add_argument('--sampling_steps', type=int, default=1000)
+    parser.add_argument('--sampling_method', type=str, default='euler')
+    parser.add_argument('--sampling_steps', type=int, default=20)
    
     args = parser.parse_args()
 

@@ -25,24 +25,33 @@ python3 -u train.py -c config.yaml -l logdir -m waveode_1-rectified_flow
 ```
 
 ### Inference
+
 1. RK45 solver: 
+
 ```
-python3 inference.py --hparams config.yaml --checkpoint logdir/waveode_1-rectified_flow/xxx.pth --input test_mels_dir  --output out_dir
+python3 inference.py --hparams config.yaml --checkpoint logdir/waveode_1-rectified_flow/M_40.pth --input test_mels_dir  --output synthesized_eval --sampling_steps 20
 ```
+
 2. Euler sover: 
+
 ```
-python3 inference.py --hparams config.yaml --checkpoint logdir/waveode_1-rectified_flow/xxx.pth --input test_mels_dir  --output out_dir --sampling_method euler --sampling_steps N
+python3 inference.py --hparams config.yaml --checkpoint logdir/waveode_1-rectified_flow/M_40.pth --input test_mels_dir  --output synthesized_eval_euler --sampling_method euler --sampling_steps 20
 ```
 
 ### Train WaveODE with 2-Rectified Flow
+
 1. Generate (noise, audio) tuples using 1-Rectified Flow: 
+
 ```
-python3 inferene.py --hparams config.yaml --checkpoint logdir/waveode/xxx.pth --input all_mels_dir  --output testdata/generate
+python3 inference.py --hparams config.yaml --checkpoint logdir/waveode_1-rectified_flow/M_40.pth --input testdata/train/mels  --output testdata/generate
 ```
+
 2. Train 2-Rectified Flow using generated data
+
 ```
 python3 -u train_reflow.py -c config_reflow.yaml -l logdir -m waveode_2-rectified_flow
 ```
+
 ## Todo
 
 - [ ] Upload demos of Waveode on open-resources speech corpus such as LJSpeech and VCTK

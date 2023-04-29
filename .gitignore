@@ -4,3 +4,8 @@ testdata/train/wavs/*.wav
 testdata/train/mels/*.npy
 
 logdir/
+
+synthesized_eval_euler
+synthesized_eval
+
+test_mels_dir
