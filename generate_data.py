@@ -1,12 +1,13 @@
 import argparse
 import random
 import os
-import time
+# import time
 from tqdm import tqdm
 import numpy as np
 import torch
 import uuid
 from scipy.io import wavfile
+import soundfile as sf
 
 from model import Generator
 from utils import config_setup, load_checkpoint
@@ -29,7 +30,7 @@ def Synthesize(args, hparams):
     os.makedirs(os.path.join(args.output, 'noise'), exist_ok=True)
     os.makedirs(os.path.join(args.output, 'mels'), exist_ok=True)
 
-    rtf_list = []
+    # rtf_list = []
     batch_queue = []
     input_lengths = []
     for mel_name in tqdm(os.listdir(args.input)):

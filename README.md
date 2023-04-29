@@ -12,7 +12,14 @@ Recently ODE-based generative models are a hot topic in machine learning and ima
 
 ## Training and inference
 
+### Generate MELs
+
+```
+python3 -u generate_mels.py --output testdata/train/ --wav_folder testdata/train/wavs/ --mel_folder testdata/train/mels/
+```
+
 ### Train WaveODE with 1-Rectified Flow from scratch
+
 ```
 python3 -u train.py -c config.yaml -l logdir -m waveode_1-rectified_flow
 ```

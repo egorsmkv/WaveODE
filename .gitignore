@@ -1,0 +1,6 @@
+__pycache__/
+
+testdata/train/wavs/*.wav
+testdata/train/mels/*.npy
+
+logdir/
