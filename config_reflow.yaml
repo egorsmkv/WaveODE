@@ -40,7 +40,7 @@ g_learning_rate: 2.0e-4
 d_learning_rate: 2.0e-4
 lr_decay: 0.999
 betas: [0.8, 0.99]
-batch_size: 2
+batch_size: 12
 grad_clip_threshold: 1
 writer_interval: 1
 checkpoint_interval: 1
