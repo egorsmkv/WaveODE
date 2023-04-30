@@ -7,13 +7,6 @@ import soundfile as sf
 
 from utils import config_setup
 
-def save_wav(wav, path, hparams, norm=False):
-    if norm:
-        wav *= 32767 / max(0.01, np.max(np.abs(wav)))
-        wavfile.write(path, hparams.sample_rate, wav.astype(np.int16))
-    else:
-        sf.write(path, wav, hparams.sample_rate)
-
 
 def GenerateMELs(args):
 
