@@ -2,10 +2,6 @@ import argparse
 import os
 import numpy as np
 import librosa
-from scipy.io import wavfile
-import soundfile as sf
-
-from utils import config_setup
 
 
 def GenerateMELs(args):
