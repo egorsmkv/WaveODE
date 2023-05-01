@@ -11,5 +11,6 @@ synthesized_eval_euler
 synthesized_eval_euler_mels
 synthesized_eval
 synthesized_eval_mels
+synthesized_eval_rk45_mels
 
 test_mels_dir

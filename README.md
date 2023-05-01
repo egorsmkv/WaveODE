@@ -31,7 +31,7 @@ python3 -u train.py -c config.yaml -l logdir -m waveode_1-rectified_flow
 ```
 python3 inference.py --hparams config.yaml --checkpoint logdir/waveode_1-rectified_flow/M_0.pth --input test_mels_dir  --output synthesized_eval_rk45 --sampling_method rk45
 
-python3 inference_mel.py --hparams config.yaml --checkpoint logdir/waveode_1-rectified_flow/M_0.pth --input test_mels_dir  --output synthesized_eval_rk45_mels --sampling_method rk45
+python3 inference_mel.py --hparams config.yaml --checkpoint logdir/waveode_1-rectified_flow/M_12.pth --input test_mels_dir  --output synthesized_eval_rk45_mels --sampling_method rk45
 ```
 
 2. Euler sover: 
@@ -39,7 +39,7 @@ python3 inference_mel.py --hparams config.yaml --checkpoint logdir/waveode_1-rec
 ```
 python3 inference.py --hparams config.yaml --checkpoint logdir/waveode_1-rectified_flow/M_0.pth --input test_mels_dir  --output synthesized_eval_euler --sampling_method euler --sampling_steps 20
 
-python3 inference_mel.py --hparams config.yaml --checkpoint logdir/waveode_1-rectified_flow/M_0.pth --input test_mels_dir  --output synthesized_eval_euler_mels --sampling_method euler --sampling_steps 20
+python3 inference_mel.py --hparams config.yaml --checkpoint logdir/waveode_1-rectified_flow/M_12.pth --input test_mels_dir  --output synthesized_eval_euler_mels --sampling_method euler --sampling_steps 20
 ```
 
 ### Train WaveODE with 2-Rectified Flow
