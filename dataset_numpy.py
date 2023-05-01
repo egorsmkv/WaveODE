@@ -33,7 +33,6 @@ class BaseDataset(torch.utils.data.Dataset):
     def __len__(self):
         return len(self.fileid_list)
 
-
 class VocoderDataset(BaseDataset):
     def __init__(self, hparams, feature_dirs, fileid_list_path):
         BaseDataset.__init__(self, hparams, fileid_list_path)
@@ -45,9 +44,9 @@ class VocoderDataset(BaseDataset):
         self.audio_dir = feature_dirs[1]
 
     def __getitem__(self, index):
-        mel = torch.load(os.path.join(self.mel_dir, self.fileid_list[index] + '.mel'))
+        mel = np.load(os.path.join(self.mel_dir, self.fileid_list[index] + '.npy'))
         audio = load_wav(os.path.join(self.audio_dir, self.fileid_list[index] + '.wav'), self.hparams.sample_rate)
-        return mel, torch.FloatTensor(audio)
+        return torch.FloatTensor(mel), torch.FloatTensor(audio)
 
 
 class VocoderNoiseDataset(VocoderDataset):
@@ -56,11 +55,11 @@ class VocoderNoiseDataset(VocoderDataset):
         self.noise_dir = feature_dirs[2]
 
     def __getitem__(self, index):
-        mel = torch.load(os.path.join(self.mel_dir, self.fileid_list[index] + '.mel'))
+        mel = np.load(os.path.join(self.mel_dir, self.fileid_list[index] + '.npy'))
         audio = load_wav(os.path.join(self.audio_dir, self.fileid_list[index] + '.wav'), sr=self.hparams.sample_rate)
-        noise = torch.load(os.path.join(self.noise_dir, self.fileid_list[index] + '.mel'))
+        noise = np.load(os.path.join(self.noise_dir, self.fileid_list[index] + '.npy'))
 
-        return mel, torch.FloatTensor(audio), noise
+        return torch.FloatTensor(mel), torch.FloatTensor(audio), torch.FloatTensor(noise)
 
 class VocoderCollate():
 

@@ -2,8 +2,10 @@ __pycache__/
 
 testdata/train/wavs/*.wav
 testdata/train/mels/*.npy
+testdata/train/mels/*.mel
 
 logdir/
+logdir_OLD/
 
 synthesized_eval_euler
 synthesized_eval
