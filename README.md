@@ -29,13 +29,13 @@ python3 -u train.py -c config.yaml -l logdir -m waveode_1-rectified_flow
 1. RK45 solver: 
 
 ```
-python3 inference.py --hparams config.yaml --checkpoint logdir/waveode_1-rectified_flow/M_0.pth --input test_mels_dir  --output synthesized_eval --sampling_method rk45
+python3 inference.py --hparams config.yaml --checkpoint logdir/waveode_1-rectified_flow/M_0.pth --input test_mels_dir  --output synthesized_eval_rk45 --sampling_method rk45
 ```
 
 2. Euler sover: 
 
 ```
-python3 inference.py --hparams config.yaml --checkpoint logdir/waveode_1-rectified_flow/M_105.pth --input test_mels_dir  --output synthesized_eval_euler --sampling_method euler --sampling_steps 20
+python3 inference.py --hparams config.yaml --checkpoint logdir/waveode_1-rectified_flow/M_0.pth --input test_mels_dir  --output synthesized_eval_euler --sampling_method euler --sampling_steps 20
 ```
 
 ### Train WaveODE with 2-Rectified Flow
