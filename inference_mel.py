@@ -32,15 +32,15 @@ def Synthesize(args, hparams):
     rtf_list = []
     for mel_name in tqdm(os.listdir(args.input)):
         mel_path = os.path.join(args.input, mel_name)
-        if not mel_path.endswith('.npy'):
+        if not mel_path.endswith('.mel'):
             continue
         wav_output_path = os.path.join(args.output, 'wavs', os.path.splitext(mel_name)[0] + '.wav')
         noise_output_path = os.path.join(args.output, 'noise', os.path.splitext(mel_name)[0] + '.npy')
-        mel = np.load(mel_path)
-        mel = torch.FloatTensor(mel).cuda().unsqueeze(0)
+        mel = torch.load(mel_path)
+        mel = mel.cuda().unsqueeze(0)
         if mel.shape[1] != hparams.mel_dim:
             mel = mel.transpose(1, 2)
-        
+
         start_time = time.time()
         predicted_audio, noise = model.inference(mel, args.sampling_method, args.sampling_steps)
         predicted_audio, noise = predicted_audio.squeeze().cpu().numpy(), noise.squeeze().cpu().numpy()
